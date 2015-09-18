@@ -4,10 +4,10 @@ use fedemotta\datatables\DataTables;
 use kartik\grid\GridView;
 use yii\helpers\ArrayHelper;
 
-$this->title = 'รายงาน SUMARY รพสต.ธาตุ ปีงบ 2558';
+$this->title = 'รายงาน SUMARY รพสต.โสกใหม่ ปีงบ 2558';
 
 //$this->params['breadcrumbs'][] = ['label' => 'ข้อมูลการใช้ยา', 'url' => ['/report/report1']];
-$this->params['breadcrumbs'][] = 'รายงาน รพสต.ธาตุ SUMARY ปีงบ 2558';
+$this->params['breadcrumbs'][] = 'รายงาน SUMARY รพสต.โสกใหม่ ปีงบ 2558';
 ?>
 
 
@@ -35,13 +35,13 @@ $this->params['breadcrumbs'][] = 'รายงาน รพสต.ธาตุ S
             </ul>
         </div>
     </center>
-    <center><h1>รายงาน SUMARY รพสต.ธาตุ ปีงบ 2558</h1></center>
+    <center><h1>รายงาน SUMARY รพสต.โสกใหม่ ปีงบ 2558</h1></center>
 
     <div class="panel panel-default">
         <div class="panel-body">
             <?php
-            /*if (isset($dataProvider))
-                $dev = \yii\helpers\Html::a('คุณดนัย สอนไสย', 'https://fb.com/foyplvowlp', ['target' => '_blank']);*/
+            if (isset($dataProvider))
+                $dev = \yii\helpers\Html::a('คุณดนัย สอนไสย', 'https://fb.com/foyplvowlp', ['target' => '_blank']);
 
 
 //echo yii\grid\GridView::widget([

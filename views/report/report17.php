@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = 'รายงาน SUMARY รพสต.หิ�
                 <li><a href="?r=report/report16">รพสต.บุฮม</a></li>
                 <li><a href="?r=report/report17">รพสต.หินตั้ง</a></li>
                 <li><a href="?r=report/report18">รพสต.หาดทรายขาว</a></li>
+                <li><a href="?r=report/report19">รพสต.โสกใหม่</a></li>
             </ul>
         </div>
     </center>

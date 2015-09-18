@@ -691,6 +691,47 @@ class ReportController extends Controller {
                     'dataProvider' => $dataProvider,
         ]);
     }
+    
+    public function actionReport19() {
+
+        $sql = "SELECT d.HOSPCODE,d.dname,d.DIDSTD,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='10' THEN d.AMOUNT ELSE 0 END) AS Oct,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='11' THEN d.AMOUNT ELSE 0 END) AS Nov,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='12' THEN d.AMOUNT ELSE 0 END) AS Dece,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='01' THEN d.AMOUNT ELSE 0 END) AS Jan,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='02' THEN d.AMOUNT ELSE 0 END) AS Feb,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='03' THEN d.AMOUNT ELSE 0 END) AS Mar,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='04' THEN d.AMOUNT ELSE 0 END) AS Apr,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='05' THEN d.AMOUNT ELSE 0 END) AS May,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='06' THEN d.AMOUNT ELSE 0 END) AS June,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='07' THEN d.AMOUNT ELSE 0 END) AS July,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='08' THEN d.AMOUNT ELSE 0 END) AS Aug,
+                SUM(CASE WHEN SUBSTR(d.DATE_SERV,6,2)='09' THEN d.AMOUNT ELSE 0 END) AS Sep
+                FROM drug_opd d
+                WHERE d.DATE_SERV BETWEEN '2014-10-01' AND '2015-09-30' AND d.DIDSTD<>''
+                AND d.HOSPCODE = '13924' 
+		AND d.HOSPCODE NOT IN ('11031')
+                AND d.dname NOT IN ('')
+                GROUP BY d.DIDSTD";
+
+        try {
+            $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        } catch (\yii\db\Exception $e) {
+            throw new \yii\web\ConflictHttpException('sql error');
+        }
+        $dataProvider = new \yii\data\ArrayDataProvider([
+            //'key' => 'hoscode',
+            'allModels' => $rawData,
+            'pagination' => FALSE,
+                /* 'pagination' => [
+                  'pageSize' => 10,
+                  ], */
+        ]);
+
+        return $this->render('report19', [
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
 
     public function actionReport100() {
 
